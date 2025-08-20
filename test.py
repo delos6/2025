@@ -14,42 +14,52 @@ st.markdown("""
 </p>
 """, unsafe_allow_html=True)
 
-# 기분별 명언 (모든 문자열 한 줄)
+# 기분별 명언 (영어 + 한국어 번역)
 mood_quotes = {
     "😊 행복해요": [
-        "Count your age by friends, not years. Count your life by smiles, not tears. – John Lennon",
-        "행복은 준비된 자에게 온다 – Pascal",
-        "Happiness is not something ready made. It comes from your own actions. – Dalai Lama"
+        ("Count your age by friends, not years. Count your life by smiles, not tears. – John Lennon",
+         "나이를 세지 말고 친구를 세라. 눈물이 아닌 웃음으로 인생을 세라. – 존 레논"),
+        ("Happiness is not something ready made. It comes from your own actions. – Dalai Lama",
+         "행복은 이미 준비된 것이 아니다. 자신의 행동에서 비롯된다. – 달라이 라마"),
+        ("행복은 준비된 자에게 온다 – Pascal", "행복은 준비된 자에게 온다 – Pascal")
     ],
     "😢 슬퍼요": [
-        "Tears come from the heart and not from the brain. – Leonardo da Vinci",
-        "Out of difficulties grow miracles. – Jean de La Bruyère",
-        "슬픔이 깊을수록 영혼은 더 강해진다"
+        ("Tears come from the heart and not from the brain. – Leonardo da Vinci",
+         "눈물은 머리에서가 아니라 마음에서 나온다. – 레오나르도 다빈치"),
+        ("Out of difficulties grow miracles. – Jean de La Bruyère",
+         "어려움 속에서 기적이 자란다. – 장 드 라 브뤼에르"),
+        ("슬픔이 깊을수록 영혼은 더 강해진다", "슬픔이 깊을수록 영혼은 더 강해진다")
     ],
     "😡 화가 나요": [
-        "Anger is one letter short of danger. – Eleanor Roosevelt",
-        "Holding on to anger is like grasping a hot coal with intent to throw it; you get burned. – Buddha",
-        "자신을 지배하지 못하면, 다른 것도 지배할 수 없다. – 공자"
+        ("Anger is one letter short of danger. – Eleanor Roosevelt",
+         "분노는 ‘위험’에서 한 글자 부족하다. – 엘리너 루즈벨트"),
+        ("Holding on to anger is like grasping a hot coal with intent to throw it; you get burned. – Buddha",
+         "분노를 붙잡는 것은 던질 의도로 뜨거운 숯을 쥐는 것과 같아 결국 자신이 데인다. – 부처"),
+        ("자신을 지배하지 못하면, 다른 것도 지배할 수 없다. – 공자", "자신을 지배하지 못하면, 다른 것도 지배할 수 없다. – 공자")
     ],
     "😐 평범해요": [
-        "The way to get started is to quit talking and begin doing. – Walt Disney",
-        "평범 속에 비범이 숨어 있다",
-        "Do what you can, with what you have, where you are. – Theodore Roosevelt"
+        ("The way to get started is to quit talking and begin doing. – Walt Disney",
+         "시작하는 방법은 말하는 걸 멈추고 행동하는 것이다. – 월트 디즈니"),
+        ("Do what you can, with what you have, where you are. – Theodore Roosevelt",
+         "할 수 있는 것을, 가진 것으로, 지금 있는 곳에서 하라. – 시어도어 루즈벨트"),
+        ("평범 속에 비범이 숨어 있다", "평범 속에 비범이 숨어 있다")
     ],
     "🤩 설레요": [
-        "Shoot for the moon. Even if you miss, you'll land among the stars. – Norman Vincent Peale",
-        "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
-        "설레는 마음은 우주의 신호다"
+        ("Shoot for the moon. Even if you miss, you'll land among the stars. – Norman Vincent Peale",
+         "달을 향해 쏘라. 비록 빗나가더라도 별들 사이에 도착할 것이다. – 노먼 빈센트 필"),
+        ("The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+         "미래는 자신의 꿈의 아름다움을 믿는 사람들의 것이다. – 엘리너 루즈벨트"),
+        ("설레는 마음은 우주의 신호다", "설레는 마음은 우주의 신호다")
     ]
 }
 
 # 기분 선택
 selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_quotes.keys()))
 
-# 명언 랜덤 선택
-quote = random.choice(mood_quotes[selected_mood])
+# 랜덤 명언 선택 (영어, 한국어)
+quote_en, quote_kr = random.choice(mood_quotes[selected_mood])
 
-# 카드 스타일 출력 (진지한 배경)
+# 카드 스타일 출력
 st.markdown(f"""
 <div style="
     background-color: #f5f5f5; 
@@ -58,7 +68,8 @@ st.markdown(f"""
     box-shadow: 1px 1px 8px #cccccc; 
     text-align: center;">
     <h2 style='color: #444444;'>{selected_mood}</h2>
-    <p style='font-size:20px; color:#222222;'>{quote}</p>
+    <p style='font-size:20px; color:#222222;'>{quote_en}</p>
+    <p style='font-size:18px; color:#555555; margin-top:10px;'>{quote_kr}</p>
 </div>
 """, unsafe_allow_html=True)
 
