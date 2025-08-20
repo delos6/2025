@@ -50,6 +50,13 @@ mood_quotes = {
         ("The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
          "미래는 자신의 꿈의 아름다움을 믿는 사람들의 것이다. – 엘리너 루즈벨트"),
         ("설레는 마음은 우주의 신호다", "설레는 마음은 우주의 신호다")
+    ],
+    "🤔 싱숭생숭해요": [
+        ("Sometimes you feel unsettled, and that's okay. – Unknown",
+         "가끔 마음이 싱숭생숭할 때도 있다. 그것도 괜찮다. – 작자 미상"),
+        ("Change is the only constant in life. – Heraclitus",
+         "변화만이 인생에서 유일한 상수이다. – 헤라클리토스"),
+        ("혼란 속에서도 자신을 잃지 마세요", "혼란 속에서도 자신을 잃지 마세요")
     ]
 }
 
@@ -59,7 +66,7 @@ selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_q
 # 랜덤 명언 선택 (영어, 한국어)
 quote_en, quote_kr = random.choice(mood_quotes[selected_mood])
 
-# 카드 스타일 출력
+# 카드 스타일 출력 (진지한 배경)
 st.markdown(f"""
 <div style="
     background-color: #f5f5f5; 
