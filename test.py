@@ -37,7 +37,7 @@ mood_quotes = {
          "분노를 붙잡는 것은 던질 의도로 뜨거운 숯을 쥐는 것과 같아 결국 자신이 데인다. – 부처"),
         ("자신을 지배하지 못하면, 다른 것도 지배할 수 없다. – 공자", "자신을 지배하지 못하면, 다른 것도 지배할 수 없다. – 공자")
     ],
-    "😐 평범해요": [
+    "😐 구냥 그럼": [
         ("The way to get started is to quit talking and begin doing. – Walt Disney",
          "시작하는 방법은 말하는 걸 멈추고 행동하는 것이다. – 월트 디즈니"),
         ("Do what you can, with what you have, where you are. – Theodore Roosevelt",
