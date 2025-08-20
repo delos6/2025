@@ -6,10 +6,10 @@ st.set_page_config(page_title="오늘의 기분 명언", page_icon="✨", layout
 
 # 타이틀
 st.markdown("""
-<h1 style='text-align: center; color: #333333;'>
+<h1 style='text-align: center; color: #FFFFFF; background-color: #222222; padding: 10px; border-radius: 8px;'>
 오늘의 기분에 따른 명언
 </h1>
-<p style='text-align: center; font-size: 18px; color: #555555;'>
+<p style='text-align: center; font-size: 18px; color: #DDDDDD;'>
 당신의 기분에 맞는 진지하고 차분한 메시지를 전해드립니다.
 </p>
 """, unsafe_allow_html=True)
@@ -59,17 +59,17 @@ selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_q
 # 랜덤 명언 선택 (영어, 한국어)
 quote_en, quote_kr = random.choice(mood_quotes[selected_mood])
 
-# 카드 스타일 출력
+# 카드 스타일 출력 (어두운 배경)
 st.markdown(f"""
 <div style="
-    background-color: #f5f5f5; 
+    background-color: #333333; 
     padding: 25px; 
     border-radius: 12px; 
-    box-shadow: 1px 1px 8px #cccccc; 
+    box-shadow: 2px 2px 12px #000000; 
     text-align: center;">
-    <h2 style='color: #444444;'>{selected_mood}</h2>
-    <p style='font-size:20px; color:#222222;'>{quote_en}</p>
-    <p style='font-size:18px; color:#555555; margin-top:10px;'>{quote_kr}</p>
+    <h2 style='color: #FFD700;'>{selected_mood}</h2>
+    <p style='font-size:20px; color:#FFFFFF;'>{quote_en}</p>
+    <p style='font-size:18px; color:#DDDDDD; margin-top:10px;'>{quote_kr}</p>
 </div>
 """, unsafe_allow_html=True)
 
