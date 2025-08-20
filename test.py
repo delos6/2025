@@ -16,21 +16,21 @@ st.markdown("""
 
 # 기분별 명언 (영어 + 한국어 번역)
 mood_quotes = {
-    "😊 행복해요": [
+    "😊 해피해피": [
         ("Count your age by friends, not years. Count your life by smiles, not tears. – John Lennon",
          "나이를 세지 말고 친구를 세라. 눈물이 아닌 웃음으로 인생을 세라. – 존 레논"),
         ("Happiness is not something ready made. It comes from your own actions. – Dalai Lama",
          "행복은 이미 준비된 것이 아니다. 자신의 행동에서 비롯된다. – 달라이 라마"),
         ("행복은 준비된 자에게 온다 – Pascal", "행복은 준비된 자에게 온다 – Pascal")
     ],
-    "😢 슬퍼요": [
+    "😢 슬펑": [
         ("Tears come from the heart and not from the brain. – Leonardo da Vinci",
          "눈물은 머리에서가 아니라 마음에서 나온다. – 레오나르도 다빈치"),
         ("Out of difficulties grow miracles. – Jean de La Bruyère",
          "어려움 속에서 기적이 자란다. – 장 드 라 브뤼에르"),
         ("슬픔이 깊을수록 영혼은 더 강해진다", "슬픔이 깊을수록 영혼은 더 강해진다")
     ],
-    "😡 화가 나요": [
+    "😡 화가 치밀음": [
         ("Anger is one letter short of danger. – Eleanor Roosevelt",
          "분노는 ‘위험’에서 한 글자 부족하다. – 엘리너 루즈벨트"),
         ("Holding on to anger is like grasping a hot coal with intent to throw it; you get burned. – Buddha",
@@ -44,14 +44,14 @@ mood_quotes = {
          "할 수 있는 것을, 가진 것으로, 지금 있는 곳에서 하라. – 시어도어 루즈벨트"),
         ("평범 속에 비범이 숨어 있다", "평범 속에 비범이 숨어 있다")
     ],
-    "🤩 설레요": [
+    "🤩 설레임": [
         ("Shoot for the moon. Even if you miss, you'll land among the stars. – Norman Vincent Peale",
          "달을 향해 쏘라. 비록 빗나가더라도 별들 사이에 도착할 것이다. – 노먼 빈센트 필"),
         ("The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
          "미래는 자신의 꿈의 아름다움을 믿는 사람들의 것이다. – 엘리너 루즈벨트"),
         ("설레는 마음은 우주의 신호다", "설레는 마음은 우주의 신호다")
     ],
-    "🤔 싱숭생숭해요": [
+    "🤔 싱숭생숭해": [
         ("Sometimes you feel unsettled, and that's okay. – Unknown",
          "가끔 마음이 싱숭생숭할 때도 있다. 그것도 괜찮다. – 작자 미상"),
         ("Change is the only constant in life. – Heraclitus",
