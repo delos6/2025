@@ -66,7 +66,7 @@ selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_q
 # 랜덤 명언 선택 (영어, 한국어)
 quote_en, quote_kr = random.choice(mood_quotes[selected_mood])
 
-# 카드 스타일 출력 (진지한 배경)
+# 카드 스타일 출력
 st.markdown(f"""
 <div style="
     background-color: #f5f5f5; 
@@ -80,7 +80,32 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-st.balloons()
+# 🎈 풍선 대신 이모지 애니메이션
+emoji_animation = """
+<style>
+@keyframes floatUp {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-200px); opacity: 0; }
+}
+.emoji {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  font-size: 40px;
+  animation: floatUp 4s ease-in-out infinite;
+}
+.emoji:nth-child(2) { left: 45%; animation-delay: 1s; }
+.emoji:nth-child(3) { left: 55%; animation-delay: 2s; }
+.emoji:nth-child(4) { left: 60%; animation-delay: 3s; }
+</style>
+
+<div class="emoji">✨</div>
+<div class="emoji">🌸</div>
+<div class="emoji">💫</div>
+<div class="emoji">🌟</div>
+"""
+
+st.markdown(emoji_animation, unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("🌟 Made with ❤️ using Streamlit 🌟")
