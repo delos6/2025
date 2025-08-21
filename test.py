@@ -1,44 +1,35 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import streamlit as st
 
-export default function EmojiQuote() {
-  const [emoji, setEmoji] = useState("✨");
-  const [isAnimating, setIsAnimating] = useState(false);
+# 페이지 세팅
+st.set_page_config(page_title="Emoji Floating Quotes", page_icon="✨", layout="centered")
 
-  const emojis = ["🌸", "💡", "🌈", "🔥", "🌍", "🌟"];
+# 제목
+st.markdown("<h2 style='text-align:center;'>✨ Inspiring Emoji Quote ✨</h2>", unsafe_allow_html=True)
 
-  const handleClick = () => {
-    if (isAnimating) return; // 애니메이션 중에는 클릭 방지
-    setIsAnimating(true);
-    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    setEmoji(randomEmoji);
-  };
+# 명언
+quote = "🌟 The best way to get started is to quit talking and begin doing. 🌟"
+st.markdown(f"<p style='font-size:22px; text-align:center; font-weight:bold;'>{quote}</p>", unsafe_allow_html=True)
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-pink-200 to-blue-200">
-      <div className="text-2xl font-bold mb-6">✨ Inspiring Emoji Quote ✨</div>
-      <button
-        onClick={handleClick}
-        className="px-6 py-3 bg-white rounded-2xl shadow-md hover:shadow-xl transition font-semibold"
-      >
-        Show Emoji
-      </button>
-
-      <AnimatePresence>
-        {isAnimating && (
-          <motion.div
-            key={emoji}
-            initial={{ opacity: 1, y: 0, scale: 1 }}
-            animate={{ opacity: 0, y: -100, scale: 1.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            onAnimationComplete={() => setIsAnimating(false)}
-            className="text-6xl mt-10"
-          >
-            {emoji}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+# 이모지 애니메이션 (CSS 활용)
+emoji_animation = """
+<style>
+@keyframes floatUp {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-150px); opacity: 0; }
 }
+.emoji {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  font-size: 30px;
+  animation: floatUp 3s linear infinite;
+}
+</style>
+
+<div class="emoji">✨</div>
+<div class="emoji" style="left:45%; animation-delay: 0.5s;">💫</div>
+<div class="emoji" style="left:55%; animation-delay: 1s;">🌸</div>
+<div class="emoji" style="left:52%; animation-delay: 1.5s;">🌟</div>
+"""
+
+st.markdown(emoji_animation, unsafe_allow_html=True)
