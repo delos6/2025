@@ -1,10 +1,8 @@
 import streamlit as st
 import random
 
-# 페이지 설정
 st.set_page_config(page_title="오늘의 기분 명언", page_icon="✨", layout="centered")
 
-# 타이틀
 st.markdown("""
 <h1 style='text-align: center; color: #333333;'>
 오늘의 기분에 따른 명언
@@ -14,7 +12,6 @@ st.markdown("""
 </p>
 """, unsafe_allow_html=True)
 
-# 기분별 명언
 mood_quotes = {
     "😊 해피해피함": [
         ("Count your age by friends, not years. – John Lennon", "나이를 세지 말고 친구를 세라 – 존 레논"),
@@ -23,27 +20,15 @@ mood_quotes = {
     "😢 슬퍼요": [
         ("Tears come from the heart. – Leonardo da Vinci", "눈물은 마음에서 나온다 – 레오나르도 다빈치"),
         ("Out of difficulties grow miracles. – Jean de La Bruyère", "어려움 속에서 기적이 자란다 – 장 드 라 브뤼에르")
-    ],
-    "😡 화가 나요": [
-        ("Anger is one letter short of danger. – Eleanor Roosevelt", "분노는 ‘위험’에서 한 글자 부족하다 – 엘리너 루즈벨트")
-    ],
-    "😐 평범해요": [
-        ("The way to get started is to quit talking. – Walt Disney", "시작하는 방법은 말하는 걸 멈추고 행동하는 것이다 – 월트 디즈니")
     ]
 }
 
-# 기분별 이모지
 mood_emojis = {
     "😊 해피해피함": ["😊", "😃", "🥳"],
-    "😢 슬퍼요": ["😢", "😭", "😔"],
-    "😡 화가 나요": ["😡", "😠", "🤬"],
-    "😐 평범해요": ["😐", "😶", "😑"]
+    "😢 슬퍼요": ["😢", "😭", "😔"]
 }
 
-# 기분 선택
 selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_quotes.keys()))
-
-# 랜덤 명언 선택
 quote_en, quote_kr = random.choice(mood_quotes[selected_mood])
 
 # 명언 카드
@@ -56,4 +41,19 @@ st.markdown(f"""
     text-align: center;">
     <h2 style='color: #444444;'>{selected_mood}</h2>
     <p style='font-size:20px; color:#222222;'>{quote_en}</p>
-    <p style='font-siz
+    <p style='font-size:18px; color:#555555; margin-top:10px;'>{quote_kr}</p>
+</div>
+""", unsafe_allow_html=True)
+
+# 기분별 이모지 애니메이션
+emoji_list = mood_emojis[selected_mood]
+emoji_animation = "<style>@keyframes floatUp {{ 0% {{ transform: translateY(0); opacity:1; }} 100% {{ transform: translateY(-200px); opacity:0; }} }}"
+for i, e in enumerate(emoji_list):
+    emoji_animation += f".emoji{i} {{ position: fixed; bottom: 10px; left:{45+i*10}%; font-size:40px; animation: floatUp 4s ease-in-out infinite; animation-delay:{i*0.5}s; }}"
+emoji_animation += "</style>"
+emoji_animation += "".join([f"<div class='emoji{i}'>{e}</div>" for i, e in enumerate(emoji_list)])
+
+st.markdown(emoji_animation, unsafe_allow_html=True)
+
+st.markdown("---")
+st.caption("🌟 Made with ❤️ using Streamlit 🌟")
