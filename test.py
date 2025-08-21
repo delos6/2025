@@ -1,10 +1,18 @@
-import streamlit as st
-import random
+import streamlit as st  # Streamlit 라이브러리 불러오기
+import random  # 랜덤으로 명언 선택할 때 사용
 
+# =======================
 # 페이지 설정
-st.set_page_config(page_title="오늘의 기분 명언", page_icon="✨", layout="centered")
+# =======================
+st.set_page_config(
+    page_title="오늘의 기분 명언",  # 브라우저 탭 제목
+    page_icon="✨",                  # 브라우저 탭 아이콘
+    layout="centered"               # 앱 레이아웃을 중앙 정렬
+)
 
-# 타이틀
+# =======================
+# 타이틀과 설명
+# =======================
 st.markdown("""
 <h1 style='text-align: center; color: #333333;'>
 오늘의 기분에 따른 명언
@@ -13,8 +21,13 @@ st.markdown("""
 당신의 기분에 맞는 진지하고 차분한 메시지를 전해드립니다.
 </p>
 """, unsafe_allow_html=True)
+# unsafe_allow_html=True를 통해 HTML 태그 사용 가능
 
-# 기분별 명언
+# =======================
+# 기분별 명언 데이터
+# =======================
+# 각 기분을 key로, 명언 리스트를 value로 설정
+# 각 명언은 (영어, 한국어) 튜플로 구성
 mood_quotes = {
     "😊 해피해피함": [
         ("Count your age by friends, not years. – John Lennon", "나이를 세지 말고 친구를 세라 – 존 레논"),
@@ -23,7 +36,7 @@ mood_quotes = {
     ],
     "😢 슬퍼요": [
         ("Tears come from the heart and not from the brain. – Leonardo da Vinci", "눈물은 머리에서가 아니라 마음에서 나온다. – 레오나르도 다빈치"),
-        ("Out of difficulties grow miracles. – Jean de La Bruyère", "어려움 속에서 기적이 자란다 – 장 드 라 브뤼에르"),
+        ("Out of difficulties grow miracles. – Jean de La Bruyère", "어려움 속에서 기적이 자란다. – 장 드 라 브뤼에르"),
         ("슬픔이 깊을수록 영혼은 더 강해진다", "슬픔이 깊을수록 영혼은 더 강해진다")
     ],
     "😡 화가 나요": [
@@ -48,7 +61,10 @@ mood_quotes = {
     ]
 }
 
-# 기분별 이모지
+# =======================
+# 기분별 이모지 데이터
+# =======================
+# 선택된 기분에 맞춰서 떠오를 이모지를 설정
 mood_emojis = {
     "😊 해피해피함": ["😊", "😃", "🥳"],
     "😢 슬퍼요": ["😢", "😭", "😔"],
@@ -58,13 +74,22 @@ mood_emojis = {
     "🤔 싱숭생숭해요": ["🤔", "😕", "🤯"]
 }
 
-# 기분 선택 (mood_emojis 기준으로 selectbox 생성 -> KeyError 방지)
+# =======================
+# 사용자가 선택할 기분
+# =======================
+# selectbox의 항목을 mood_emojis 기준으로 생성 → KeyError 방지
 selected_mood = st.selectbox("오늘의 기분을 선택하세요:", list(mood_emojis.keys()))
 
-# 랜덤 명언 선택 (영어 + 한국어)
-quote_en, quote_kr = random.choice(mood_quotes.get(selected_mood, [("","")]))  # 안전하게 get 사용
+# =======================
+# 랜덤 명언 선택
+# =======================
+# get 사용: 선택된 키가 없으면 빈 명언 반환 (안전하게 처리)
+quote_en, quote_kr = random.choice(mood_quotes.get(selected_mood, [("","")]))
 
+# =======================
 # 명언 카드 출력
+# =======================
+# HTML + CSS를 사용하여 카드 스타일 적용
 st.markdown(f"""
 <div style="
     background-color: #f5f5f5; 
@@ -78,15 +103,26 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+# =======================
 # 기분별 이모지 애니메이션
+# =======================
+# @keyframes floatUp: 이모지를 위로 떠오르게 하는 CSS 애니메이션
 emoji_list = mood_emojis.get(selected_mood, [])
 emoji_animation = "<style>@keyframes floatUp {{ 0% {{ transform: translateY(0); opacity:1; }} 100% {{ transform: translateY(-200px); opacity:0; }} }}"
+
+# 각 이모지를 화면에 띄우고 애니메이션 적용
 for i, e in enumerate(emoji_list):
     emoji_animation += f".emoji{i} {{ position: fixed; bottom: 10px; left:{40+i*15}%; font-size:40px; animation: floatUp 4s ease-in-out infinite; animation-delay:{i*0.5}s; }}"
 emoji_animation += "</style>"
+
+# HTML div로 이모지 표시
 emoji_animation += "".join([f"<div class='emoji{i}'>{e}</div>" for i, e in enumerate(emoji_list)])
 
+# Streamlit에서 HTML 렌더링
 st.markdown(emoji_animation, unsafe_allow_html=True)
 
+# =======================
+# 구분선과 캡션
+# =======================
 st.markdown("---")
 st.caption("🌟 Made with ❤️ using Streamlit 🌟")
