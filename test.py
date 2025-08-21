@@ -21,7 +21,7 @@ mood_quotes = {
         ("Happiness is not something ready made. – Dalai Lama", "행복은 이미 준비된 것이 아니다 – 달라이 라마"),
         ("행복은 준비된 자에게 온다 – Pascal", "행복은 준비된 자에게 온다 – Pascal")
     ],
-    "😢 슬펑": [
+    "😢 슬픔": [
         ("Tears come from the heart and not from the brain. – Leonardo da Vinci", "눈물은 머리에서가 아니라 마음에서 나온다. – 레오나르도 다빈치"),
         ("Out of difficulties grow miracles. – Jean de La Bruyère", "어려움 속에서 기적이 자란다 – 장 드 라 브뤼에르"),
         ("슬픔이 깊을수록 영혼은 더 강해진다", "슬픔이 깊을수록 영혼은 더 강해진다")
